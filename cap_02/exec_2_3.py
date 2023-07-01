@@ -1,40 +1,50 @@
 #2.3
 
-hora = 6
-minuto = 52
-segundo = 0
+horas = 6
+minutos = 52
+segundos = 0
 
-tempo_total = (hora * 60) + minuto
+horas_em_segundos = (horas * 60 ) * 60
+minutos_em_segundos = minutos * 60
 
-
-parte1_min = 1 * 8
-parte1_seg = 1 * 15
-
-
-parte2_min = 3 * 7
-parte2_seg = 3 * 12
+segundos_totais = segundos + minutos_em_segundos + horas_em_segundos
+# no trecho acima se transforma o horário atual em segundos
 
 
-parte3_min = 1 * 8
-parte3_seg = 1 * 15
+parte_1_minutos = 8
+parte_1_segundos = 15
 
-segundos  =  parte1_seg + parte2_seg + parte3_seg
-minutos = parte1_min + parte2_min + parte3_min
-print(minutos)
-print(segundos)
+parte_2_minutos = 7
+parte_2_segundos = 12
 
-hora_preproc = tempo_total 
-minuto_processado = segundos // 60
-segundo_processado_resto = segundos % 60
+parte_3_minutos = 8
+parte_3_segundos = 15
 
-
-hora_processado = (minutos + tempo_total) // 60
-hora_processado_resto = minutos % 60
-
-hora_final = hora_processado
-minuto_final = hora_processado_resto + minuto_processado
-segundo_final = segundo_processado_resto
-
-print(f"{hora_final}:{minuto_final-8}:{segundo_final}")
+# na parte acima se define o tempo de cada volta
 
 
+
+
+tempo_final_em_segundos = segundos_totais
+
+soma_parte_1 = (parte_1_minutos * 60)
+soma_parte_1 += parte_1_segundos
+
+soma_parte_2 = (parte_2_minutos * 60) * 3
+soma_parte_2 += parte_2_segundos * 3
+
+soma_parte_3 = (parte_3_minutos * 60)
+soma_parte_3 += parte_3_segundos
+
+#na parte acima transforma o tempo percorrido em segundos
+
+tempo_final_em_segundos += soma_parte_1
+tempo_final_em_segundos += soma_parte_2
+tempo_final_em_segundos += soma_parte_3
+
+horas_finais = (tempo_final_em_segundos // 60 ) // 60
+minutos_finais = (tempo_final_em_segundos // 60 ) % 60
+segundos_finais =  (tempo_final_em_segundos % 60 ) % 60
+print(f"{horas_finais}:{minutos_finais}:{segundos_finais}")
+
+# no trecho acima se faz a fatoração dos segundos para transformar em hora
